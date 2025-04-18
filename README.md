@@ -8,5 +8,4 @@
 
 ![image](https://github.com/user-attachments/assets/8568d869-87ed-4c27-8ea3-798709430451)
 
-<p align = "Justify" >Sistem Rekomendasi adalah salah satu cara untuk menguntungkan kedua belah pihak konsumen yang bisa memilih game apa yang sesuai dengan selera mereka, dan industri game bisa mempelajari dari data konsumen dengan memanfaatkan perkembangan teknologi sekarang, menggunakan teknologi Machine Learning dapat membuat sistem rekomendasi yang menguntungkan dua belah pihak ini.</p> 
-[[1]](https://ieeexplore.ieee.org/abstract/document/8490456)
+<p align = "Justify" >Sistem Rekomendasi adalah salah satu cara untuk menguntungkan kedua belah pihak konsumen yang bisa memilih game apa yang sesuai dengan selera mereka, dan industri game bisa mempelajari dari data konsumen dengan memanfaatkan perkembangan teknologi sekarang, menggunakan teknologi Machine Learning dapat membuat sistem rekomendasi yang menguntungkan dua belah pihak ini. <a href = "https://ieeexplore.ieee.org/abstract/document/8490456">[1]</a></p> 
