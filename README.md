@@ -14,6 +14,33 @@
 Dari Latar Belakang di atas kita bisa diambil Problem
 
 ### Problem
-* Bagaimana cara melakukan pra-pemrosesan pada data movie recomendation yang akan digunakan agar dapat membuat model yang baik menggunakan teknik content-base filtering dan dan collaborative filtering?
+* Bagaimana cara melakukan pra-pemrosesan pada data list buku yang akan digunakan agar dapat membuat model yang baik menggunakan teknik content based filtering dan dan collaborative filtering?
 * Bagaimana memberikan rekomendasi Buku berdasarkan genre pada setiap judul Buku yang pelanggan input sehingga dapat memberikan preferensi yang sesuai Konsumen inginkan?
 
+### Goals
+* Melakukan pra-pemrosesan pada data list buku agar nantinya dapat diproses pada model yang menggunaan teknik content based filltering dan collaborative filltering.
+* Memberikan referensi judul buku untuk mempermudah pelanggan mencari buku yang sesuai dengan selera mereka dengan model yang sudah dibangun.
+
+### Problem Statment
+untuk mencapai Goals yang ada dapat melakukan bebrapa solusi yaitu :
+* Untuk tujuan pertama, melakukan pra-pemrosesan data dengan bebrapa teknik yaitu:
+  * Memeriksa masalah data yang ada dalam dataset.
+  * Melakukan visualisasi data untuk mempelajari data.
+  * Membersihkan judul buku yang duplikat dalam dataset
+* Untuk tujuan kedua yaitu membuat rekomendasi judul buku kepada pengguna dengan menggunakan dua metode yaitu Content based filltering dan collaborative filltering.
+  * Content based filltering.
+    <br>adalah metode yang memilih item berdasarkan korelasi antara konten item dan preferensi pengguna <a href = "https://users.ics.forth.gr/~potamias/mlnia/paper_6.pdf">[2]</a>, Content-based filtering
+    mempelajari profil minat pengguna baru berdasarkan data dari objek yang telah
+    dinilai pengguna. Algoritma ini bekerja dengan menyarankan item serupa yang pernah disukai di masa lalu atau sedang dilihat di masa kini kepada pengguna. Metode ini memiliki kelebihan dan kekurangan
+    diantarinya adalah :
+    * Kelebihan
+      <br>Metode ini tidak bergantung pada pengguna lain karena menggunakan data milik sendiri.
+    * Kekurangan
+      <br>Tidak cocok untuk new user karena metode ini sangat memerlukan data riwayat dari pengguna.
+  * Collaborative filltering
+    <br>adalah metode yang bekerja dengan dengan mencari sekelompok besar orang dan menemukan sekelompok kecil pengguna dengan selera yang mirip dengan pengguna tertentu. Ia melihat item yang mereka sukai dan
+    menggabungkannya untuk membuat daftar saran yang diberi peringkat. Metode ini juga memiliki kelebihan dan kekurangan yaitu :
+    * Kelebihan
+      <br>Metode ini tidak bergantung pada informasi item secara eksplisit karena mengandalkan pola interaksi antar pengguna.
+    * Kekurangan
+      <br>Tidak cocok untuk pengguna baru karena metode ini sangat memerlukan riwayat interaksi untuk menghasilkan rekomendasi.
