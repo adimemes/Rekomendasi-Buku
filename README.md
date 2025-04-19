@@ -62,6 +62,7 @@ Berisikan data dari pembaca / User mulai dari umur sampai tempat tinggal mereka 
 
 ![image](https://github.com/user-attachments/assets/bf2a2db6-81d3-409b-9a90-1353737f0957) <br>
 
+### Books CSV
 Pada data Books.csv terdapat 8 kolom data yang berisikan 271360 baris data.<br>
 - ISBN Merupakan kode unik identifikasi buku (International Standard Book Number).
 - Book-Title Data Judul Buku yang ada
@@ -71,4 +72,23 @@ Pada data Books.csv terdapat 8 kolom data yang berisikan 271360 baris data.<br>
 - Image-URL-S Data URL gambar kecil dari sampul buku.
 - Iamage-URL-M Data URL gambar sedang dari sampul buku.
 - Image-URL-L Data URL gambar besar dari sampul buku.
+
 ![image](https://github.com/user-attachments/assets/1b89d1f6-33ee-460a-b7aa-773fb402129d)
+
+### Rating CSV
+Pada data Rating.csv terdapat 3 kolom data yang berisikan 1149780 baris data <br>
+- User-Id adalah Data ID dari User
+- ISBN adalah kode unik dari buku (International Standar Book Number)
+- Book Rating Data Rating dari user untuk Buku yang dibaca
+
+![image](https://github.com/user-attachments/assets/fe107921-59a5-4669-b7e0-2daab5967134)
+
+### User CSV
+Pada data User.csv terdapat 3 kolom data yang berisikan 278858  baris data <br>
+- User-Id adalah Data ID dari User
+- Location adalah yang berisikan location dari User
+- Age adalah data yang berisikan info umur dari User
+
+![image](https://github.com/user-attachments/assets/558dd8e5-f410-41b8-ba0c-1c7f5c88c1e9)
+
+
