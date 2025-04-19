@@ -4,7 +4,7 @@
 
 > **Domain Project Yang Dipilih pada project ini adalah mengenai Rekomendasi Buku"System Recomendation Buku"**
 
-<p align = "Justify">Perkembangan industri buku saat ini terus mengalami kemajuan, dengan banyaknya genre dan penulis yang menawarkan cerita menarik, informatif, dan menginspirasi. Penerbit besar maupun independen berlomba-lomba menyajikan karya terbaik mereka, baik dalam bentuk cetak maupun digital. Di era digital sekarang, platform pembelian dan pembacaan buku seperti Goodreads, Amazon, dan Google Books semakin memudahkan kita untuk mengakses ribuan bahkan jutaan judul buku.Namun, dengan begitu banyaknya pilihan buku yang tersedia, pembaca seringkali kebingungan dalam memilih buku yang sesuai dengan selera dan kebutuhannya. Hal ini juga menjadi tantangan tersendiri bagi penulis dan penerbit untuk mengetahui preferensi pembaca dan tren pasar.Oleh karena itu, sistem rekomendasi buku hadir sebagai solusi untuk membantu pembaca menemukan buku yang sesuai dengan minat mereka berdasarkan genre, rating, dan preferensi pengguna lainnya. Sistem ini juga dapat membantu penerbit dan penulis memahami arah selera pasar dalam pengembangan buku selanjutnya.</p> 
+<p align = "Justify">Perkembangan industri buku saat ini terus mengalami kemajuan, dengan banyaknya judul dan penulis yang menawarkan cerita menarik, informatif, dan menginspirasi. Penerbit besar maupun independen berlomba-lomba menyajikan karya terbaik mereka, baik dalam bentuk cetak maupun digital. Di era digital sekarang, platform pembelian dan pembacaan buku seperti Goodreads, Amazon, dan Google Books semakin memudahkan kita untuk mengakses ribuan bahkan jutaan judul buku.Namun, dengan begitu banyaknya pilihan buku yang tersedia, pembaca seringkali kebingungan dalam memilih buku yang sesuai dengan selera dan kebutuhannya. Hal ini juga menjadi tantangan tersendiri bagi penulis dan penerbit untuk mengetahui preferensi pembaca dan tren pasar.Oleh karena itu, sistem rekomendasi buku hadir sebagai solusi untuk membantu pembaca menemukan buku yang sesuai dengan minat mereka berdasarkan judul, Author, rating, dan preferensi pengguna lainnya. Sistem ini juga dapat membantu penerbit dan penulis memahami arah selera pasar dalam pengembangan buku selanjutnya.</p> 
 
 ![image](https://github.com/user-attachments/assets/b41869e7-e053-4868-93f1-4c14ee861dc9)
 
@@ -15,11 +15,11 @@
 Dari Latar Belakang di atas kita bisa diambil Problem
 
 ### Problem
-* Bagaimana cara melakukan pra-pemrosesan pada data list buku yang akan digunakan agar dapat membuat model yang baik menggunakan teknik content based filtering dan dan collaborative filtering?
-* Bagaimana memberikan rekomendasi Buku berdasarkan genre pada setiap judul Buku yang pelanggan input sehingga dapat memberikan preferensi yang sesuai Konsumen inginkan?
+* Bagaimana cara melakukan pra-pemrosesan pada data Dataset yang akan digunakan agar dapat membuat model yang baik menggunakan teknik content based filtering dan dan collaborative filtering?
+* Bagaimana memberikan rekomendasi Buku berdasarkan Data pada setiap judul Buku yang pelanggan input sehingga dapat memberikan preferensi yang sesuai Konsumen inginkan?
 
 ### Goals
-* Melakukan pra-pemrosesan pada data list buku agar nantinya dapat diproses pada model yang menggunaan teknik content based filltering dan collaborative filltering.
+* Melakukan pra-pemrosesan pada dataset agar nantinya dapat diproses pada model yang menggunaan teknik content based filltering dan collaborative filltering.
 * Memberikan referensi judul buku untuk mempermudah pelanggan mencari buku yang sesuai dengan selera mereka dengan model yang sudah dibangun.
 
 ### Problem Statment
@@ -48,7 +48,7 @@ untuk mencapai Goals yang ada dapat melakukan bebrapa solusi yaitu :
 
 # Data Understanding
 --- 
-Dalam Project ini menggunakan dataset yang sudah tersedia dalam situs Kaggle, dimana data ini memiliki 3 buah data inti yaitu data buku, rating, user pada data ini terdapat fitur yang bisa digunakan untuk membuat sebuah sistem rekomendasi yang bisa memberikan referensi buku yang sesuai dengan genre dari pengguna. <br>
+Dalam Project ini menggunakan dataset yang sudah tersedia dalam situs Kaggle, dimana data ini memiliki 3 buah data inti yaitu data buku, rating, user pada data ini terdapat fitur yang bisa digunakan untuk membuat sebuah sistem rekomendasi yang bisa memberikan referensi buku yang sesuai dengan pendekatan dari pengguna. <br>
 Referensi [Dataset](https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset/data) <br>
 ![image](https://github.com/user-attachments/assets/78c5ac7e-629c-4d65-8531-74fc54c7956e)
 
@@ -90,5 +90,6 @@ Pada data User.csv terdapat 3 kolom data yang berisikan 278858  baris data <br>
 - Age adalah data yang berisikan info umur dari User
 
 ![image](https://github.com/user-attachments/assets/558dd8e5-f410-41b8-ba0c-1c7f5c88c1e9)
+
 
 
