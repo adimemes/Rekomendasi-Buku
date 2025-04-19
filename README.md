@@ -71,5 +71,4 @@ Pada data Books.csv terdapat 8 kolom data yang berisikan 271360 baris data.<br>
 - Image-URL-S Data URL gambar kecil dari sampul buku.
 - Iamage-URL-M Data URL gambar sedang dari sampul buku.
 - Image-URL-L Data URL gambar besar dari sampul buku.
-<br>
-![image](https://github.com/user-attachments/assets/b18b06e7-4642-47c0-a957-a4a6801fdabc)
+![image](https://github.com/user-attachments/assets/1b89d1f6-33ee-460a-b7aa-773fb402129d)
