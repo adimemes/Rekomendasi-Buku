@@ -91,5 +91,5 @@ Pada data User.csv terdapat 3 kolom data yang berisikan 278858  baris data <br>
 
 ![image](https://github.com/user-attachments/assets/558dd8e5-f410-41b8-ba0c-1c7f5c88c1e9)
 
-
-
+# Data Preparation
+Berikut adalah tahapan-tahapan dalam melakukan Persiapan data:
