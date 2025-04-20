@@ -92,4 +92,8 @@ Pada data User.csv terdapat 3 kolom data yang berisikan 278858  baris data <br>
 ![image](https://github.com/user-attachments/assets/558dd8e5-f410-41b8-ba0c-1c7f5c88c1e9)
 
 # Data Preparation
-Berikut adalah tahapan-tahapan dalam melakukan Persiapan data:
+Pada Tahapan ini ada beberapa yang perlu dilakukan untuk selanjutnya membuat Model Yaitu:
+* Memperbaiki type data pada colom Year-Of-Publication dan Age
+* Memperbaiki data yang memiliki missing value
+* Menghapus data nan pada Year-of-publication
+* Menggabung Dataset Books dan Ratings
