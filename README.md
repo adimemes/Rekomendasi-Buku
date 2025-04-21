@@ -89,14 +89,43 @@ Pada data User.csv terdapat 3 kolom data yang berisikan 278858  baris data <br>
 - Location adalah yang berisikan location dari User
 - Age adalah data yang berisikan info umur dari User
 
-![image](https://github.com/user-attachments/assets/558dd8e5-f410-41b8-ba0c-1c7f5c88c1e9)
+![image](https://github.com/user-attachments/assets/558dd8e5-f410-41b8-ba0c-1c7f5c88c1e9) <br>
+
+Kemudian pada tahap ini dilakukan pengecekan data, apakah ada data yang mengalami missing value ? data yang mengalami duplikat, dan melakukan visualisasi data untuk lebih jelas dalam memahami data yang ada <br>
+
+pada pengecekan data yang mengalami missing value terdapat beberapa colom yang mengalami missing value <br>
+![image](https://github.com/user-attachments/assets/c30830a5-2543-4135-888d-ba5f8f1b753c) <br>
+Dilihat ada dua dataset yang memiliki data missing pada colomnya yaitu data pada Books yaitu colom : ```'Book-Author', 'Publisher', 'Image-URL-L'``` Untuk kasus ini bisa membuang data yang ada, dikarenakan jumlah data yang missing hanya sedikit dan tidak terlalu mempengaruhi model nantinya <br>
+Untuk data lagi satu yaitu data Users pada colom : ```Age``` Untuk kasus ini kita tidak bisa menggunakan metode yang sama pada data missing dalam data Books, karena jumlah data yang missing disini terlalu banyak dan sangat beresiko jika kita hapus semua data yang missing tersebut, dikarenakan itu menggunakan metode median, dimana menggati data yang missing tersebut dengan nilai rata-rata dari data ```Age``` <br>
+langkah-langkah tersebut akan dilakukan pada tahap Data Preparation.
+
+### Visualisasi Data
+Pada Tahap ini melakukan tiga visualisasi data yaitu :
+* Melihat Author Terbanyak dan Top Publisher
+* Melihat Trend Tahun Distribusi Buku
+* Melihat Jumlah Rating Buku
+
+#### Melihat Author Terbanyak dan Top Publisher
+Untuk melihat jumlah Author dan publisher bisa menggunakan bantuan libary pandas dengan code ```value_count()``` untuk menghitung keseluruhan jumlah dari data author dan publisher<br>
+kemudian dalam membuat chart dibantu dengan libary seaborn<br>
+![image](https://github.com/user-attachments/assets/8ba49f71-acf3-453e-98a6-1bff7f660a6c) <br>
+pada grafik Dilihat Bahwa Untuk Author Terbanyak yaitu ada Agatha Christie sebanyak lebih dari 600 buku yang ada dan kemudian di bagian publisher yaitu ada Harlequin yang menjadi top publisher dengan lebih dari 7000 buku <br>
+
+#### Melihat Trend Tahun Distribusi Buku
+Disini sama dari sebelumnya kita menggunakan bantuan libary seaborn untuk membuat chart tabelnya namun karena pada data Year-of-publication terdapat sedikit kesalahan type data dan terdapat data yang bernilai 0 pada data dikarenakan itu pada grafik menampilkan data yang kurang akurat
+![image](https://github.com/user-attachments/assets/fb67d2be-c22e-47d4-983c-e64130647a08) <br>
+
+#### Melihat Jumlah Rating Buku
+Pada tahap ini juga sama menggunakan libary seaborn untuk membuat chartnya, dan dilihat dari data user banyak memberikan rating 0 pada buku dan yang paling sedikit adalah rating 1
+![image](https://github.com/user-attachments/assets/19b97ab4-7e4e-4461-a6c3-b59af4e651da)
+
 
 # Data Preparation
 Pada Tahapan ini ada beberapa yang perlu dilakukan untuk selanjutnya membuat Model Yaitu:
 * Memperbaiki type data pada colom Year-Of-Publication dan Age
 * Memperbaiki data yang memiliki missing value
 * Menghapus data nan pada Year-of-publication
-* Menggabung Dataset Books dan Ratings
+* Menggabung Dataset Books dan Ratings untuk Mencari top Buku
 
 ### Memperbaiki type data pada colom Year-Of-Publication dan Age
 ![image](https://github.com/user-attachments/assets/c4bf14e7-de35-4e9e-9598-7cdce1dce6b8) <br>
@@ -110,3 +139,25 @@ Pada tahapan ini kita membuat dua metode yaitu dengan menggunakan ```dropna()```
 #### Colom 'Age'
 ![image](https://github.com/user-attachments/assets/ed0a9efd-bd3e-4d6d-8bbf-ae52b0d9e7ac) <br>
 Sedangkan pada colom Age di data Users kita menggunakan metode Mengganti nilai yang missing value dengan ```.median()``` dari nilai colom Age 
+
+### Menghapus data nan pada Year-of-Publication 
+Tapah ini yaitu menggunakan libary pandas dalam mengatasi data yang nan, dan mengatur untuk hanya mengambil data dengan rentang tahun 1900 sampai 2025 <br>
+```Books = Books[Books['Year-Of-Publication'].notna()]``` <br>
+```Books = Books[(Books['Year-Of-Publication'] >= 1900) & (Books['Year-Of-Publication'] <= 2025)]``` <br>
+dan dengan data yang baru bisa untuk melihat trend dari publikasi buku tahunan. <br>
+![image](https://github.com/user-attachments/assets/87808ef5-6572-45c1-acf7-a50688f938bc) <br>
+
+### Menggabung Dataset Books dan Ratings untuk Mencai top Buku
+Tahap ini memiliki beberapa tahapan :
+* Menggabungkan data Books dan Ratings melalui colom ```ISBN``` dengan bantuan libary pandas yaitu ```merge()```
+* kemudian membuat feature untuk jumlah rating dan rata-rata rating
+* Setelahnya membuat feature populer dengan mengambil buku yang hanya di rating lebih dari 300 dan memiliki rata-rata 10 besar.
+* Kemudian membuat dataframe populer_buku dengan menambahkan colom ```'Book-Title','Book-Author','Image-URL-M','num_ratings','avg_rating'```
+![image](https://github.com/user-attachments/assets/24d01605-552c-4c68-9fe2-9ecfeb1669ed)
+
+# Modeling and Result
+Pada proyek ini menggunakan dua metode yaitu :
+*   Collaborative Filtering
+*   content based filltering
+
+## Collaborative Filltering
