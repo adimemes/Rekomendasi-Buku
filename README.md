@@ -208,4 +208,5 @@ Tahap ini sudah Berdampak pada tahap praprocesing data dengan tidak adanya type 
 # REFERNSI
 [1] R. Ardiansyah, B. D. Saputra, and M. A. Bianto, "Sistem rekomendasi buku perpustakaan sekolah menggunakan metode content-based filtering," *Jurnal Computer Science and Information Technology (CoSciTech)*, vol. 4, no. 2, pp. 510–517, Aug. 2023. doi: [10.37859/coscitech.v4i2.5131](https://doi.org/10.37859/coscitech.v4i2.5131).
 
-[2] R. van Meteren and M. van Someren, "Using content-based filtering for recommendation," NetlinQ Group and University of Amsterdam. [Online]. Available: https://www.researchgate.net/publication/228967418_Using_Content-Based_Filtering_for_Recommendation
+[2] R. van Meteren and M. van Someren, "Using content-based filtering for recommendation," NetlinQ Group and University of Amsterdam. [Online]. Available: https://users.ics.forth.gr/~potamias/mlnia/paper_6.pdf
+
