@@ -151,7 +151,7 @@ dan dengan data yang baru bisa untuk melihat trend dari publikasi buku tahunan. 
 Tahap ini memiliki beberapa tahapan :
 * Menggabungkan data Books dan Ratings melalui colom ```ISBN``` dengan bantuan libary pandas yaitu ```merge()```
 * kemudian membuat feature untuk jumlah rating dan rata-rata rating
-* Setelahnya membuat feature populer dengan mengambil buku yang hanya di rating lebih dari 300 dan memiliki rata-rata 10 besar.
+* Setelahnya membuat feature populer dengan mengambil buku yang hanya di rating lebih dari 300 dan memiliki rata-rata 50 besar.
 * Kemudian membuat dataframe populer_buku dengan menambahkan colom ```'Book-Title','Book-Author','Image-URL-M','num_ratings','avg_rating'```
 ![image](https://github.com/user-attachments/assets/24d01605-552c-4c68-9fe2-9ecfeb1669ed)
 
@@ -161,3 +161,51 @@ Pada proyek ini menggunakan dua metode yaitu :
 *   content based filltering
 
 ## Collaborative Filltering
+![image](https://github.com/user-attachments/assets/355a00d2-e0d6-46fe-acd2-c1dde758e8fd)
+pada tahapan ini menggunakan metode yang base model, dimana menggunakan tahapan matrix factorization, metode ini bekerja dengan mereduksi matriks menjadi bagian-bagian penyusunnya. Kedua dekomposisi matriks ini kemudian saling dikalikan. Hasil perkalian matriks tersebut diolah dengan parameter faktor k yang menghasilkan matriks baru sebagai hasil learning dengan nilai yang mendekati nilai matriks aslinya.<br>
+Pada Project ini dibuat sebuah function untuk memanggil 5 buku yang memiliki kemiripan berdasarkan nilai matrix dengan buku yang kita inputkan. <br>
+![image](https://github.com/user-attachments/assets/452554a0-2e9a-4891-8611-6f8d6136d505)
+## Content Based Filltering
+Pada Tahapan ini menggunakan pendekatan yaitu TF-ID (Term Frequency - Inverse Document Frequency) adalah metode untuk mengubah teks menjadi angka berdasarkan:
+* TF: Seberapa sering suatu kata muncul dalam satu dokumen
+* IDF: Seberapa jarang kata itu muncul di seluruh dokumen
+Dengan Itu metode untuk mendapatkan rekomendasi Author, bisa di dapatkan dengan cara melihat seberapa sering data Author itu muncul pada User Lain
+<br>
+![image](https://github.com/user-attachments/assets/f05f4ca1-23cf-4b33-bf5d-1ac2cd3b96c1)
+
+# EVALUASI
+Pada Proyek ini membuat dua buah metode yaitu:
+* pertama menggunakan Collborative filltering, untuk mencari rekomendasi buku berdasarkan rating yang diberi User
+* Kedua adalah menggunakan Conten Based Filltering
+
+Dua Metode itu menggunakan cara kerja yang berbeda atau matriks yang beda. <br>
+* Untuk yang pertama ada menggunakan Pivot table untuk melihat user ID berapa yang memberi rating paa sebuah Buku
+* Dan pada metode kedua menggunakan TF-ID yaitu metode yang berkerja dengan cara mengubah teks menjadi angka berdasarkan:
+  * TF: Seberapa sering suatu kata muncul dalam satu dokumen
+  * IDF: Seberapa jarang kata itu muncul di seluruh dokumen
+<br>
+Dengan itu bisa mencari data kemiripian untuk Metode kedua.
+
+## Apakah Sudah Menjawab Problem Statment :
+
+* Bagaimana cara melakukan pra-pemrosesan pada data Dataset yang akan digunakan agar dapat membuat model yang baik menggunakan teknik content based filtering dan dan collaborative filtering?<br>
+Untuk Menjawab Problem Statment ini sudah dijawab pada procesing Data, dimana data dibersihkan mulai dari type data yang tidak cocok, data yang memiliki banyak sekali missing value, data yang terdapat data Nan dan 0 contohnya pada data colom "Year-Of-Publication" yang mengakibatkan grafik awal sebelum procesing data terlihat buruk dan sudah lebih baik pada selesai processing data, dan ditahap procesing data juga sudah menggabungkan dataset books dan ratings untuk nantinya dipakai dalam model
+* Bagaimana memberikan rekomendasi Buku berdasarkan Data pada setiap judul Buku yang pelanggan input sehingga dapat memberikan preferensi yang sesuai Konsumen inginkan?
+Untuk Pertanyaan ini sudah dijawab dari hasil model yang dibuat, untuk metode Collaborative Filltering sudah mendapatkan rekomendasi buku berdasarkan rating. kemudian pada metode kedua adalah mendapatkan rekomendasi author berdasarkan author kesukaan untuk mencari author yang memiliki cara dan taste yang sama.
+
+## Apakah berhasil mencapai setiap goals yang diharapkan? :
+* Melakukan pra-pemrosesan pada dataset agar nantinya dapat diproses pada model yang menggunaan teknik content based filltering dan collaborative filltering.<br>
+Goals ini sudah terjawab pada tahap Processing data, dimana sudah berhasil untuk memperbaiki type data, missing value, kesalahan value dan menggabungkan dataset untuk membuat model.
+* Memberikan referensi judul buku untuk mempermudah pelanggan mencari buku yang sesuai dengan selera mereka dengan model yang sudah dibangun. <br>
+Goals ini berhasil dengan berjalannya metode collaborative filltering dan memberikan rekomendasi buku
+
+## Apakah setiap solusi statement yang kamu rencanakan berdampak? :
+* Untuk Problrem Statment Pertama Melakukan pra-pemrosesan data:
+Tahap ini sudah Berdampak pada tahap praprocesing data dengan tidak adanya type data yang salah, missing value dan feature baru yang berisikan data yang sudah siap untuk permodelan.<br>
+
+* Untuk Problem Statment Kedua yaitu melakukan dua metode Collaborative Filltering dan Content Based Flltering: Tahap ini juga sudah berhasil dengan output rekomendasi buku dan author yang diberikan dari kedua metode tersebut
+
+# REFERNSI
+[1] R. Ardiansyah, B. D. Saputra, and M. A. Bianto, "Sistem rekomendasi buku perpustakaan sekolah menggunakan metode content-based filtering," *Jurnal Computer Science and Information Technology (CoSciTech)*, vol. 4, no. 2, pp. 510–517, Aug. 2023. doi: [10.37859/coscitech.v4i2.5131](https://doi.org/10.37859/coscitech.v4i2.5131).
+
+[2] R. van Meteren and M. van Someren, "Using content-based filtering for recommendation," NetlinQ Group and University of Amsterdam. [Online]. Available: https://www.researchgate.net/publication/228967418_Using_Content-Based_Filtering_for_Recommendation
