@@ -203,7 +203,7 @@ Goals ini berhasil dengan berjalannya metode collaborative filltering dan member
 * Untuk Problrem Statment Pertama Melakukan pra-pemrosesan data:
 Tahap ini sudah Berdampak pada tahap praprocesing data dengan tidak adanya type data yang salah, missing value dan feature baru yang berisikan data yang sudah siap untuk permodelan.<br>
 
-* Untuk Problem Statment Kedua yaitu melakukan dua metode Collaborative Filltering dan Content Based Flltering: Tahap ini juga sudah berhasil dengan output rekomendasi buku dan author yang diberikan dari kedua metode tersebut
+* Untuk Problem Statment Kedua yaitu melakukan metode Collaborative Filltering dan Content Based Flltering: Tahap ini juga sudah berhasil dengan output rekomendasi buku dan author yang diberikan dari kedua metode tersebut
 
 # REFERNSI
 [1] R. Ardiansyah, B. D. Saputra, and M. A. Bianto, "Sistem rekomendasi buku perpustakaan sekolah menggunakan metode content-based filtering," *Jurnal Computer Science and Information Technology (CoSciTech)*, vol. 4, no. 2, pp. 510–517, Aug. 2023. doi: [10.37859/coscitech.v4i2.5131](https://doi.org/10.37859/coscitech.v4i2.5131).
