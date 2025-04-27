@@ -121,11 +121,14 @@ Pada tahap ini juga sama menggunakan libary seaborn untuk membuat chartnya, dan 
 
 
 # Data Preparation
-Pada Tahapan ini ada beberapa yang perlu dilakukan untuk selanjutnya membuat Model Yaitu:
-* Memperbaiki type data pada colom Year-Of-Publication dan Age
-* Memperbaiki data yang memiliki missing value
-* Menghapus data nan pada Year-of-publication
-* Menggabung Dataset Books dan Ratings untuk Mencari top Buku
+Pada Tahapan Data Preparation ada beberapa tahapan yang dilakukan:
+### Memperbaiki Missing Value
+#### Colom 'Book-Author', 'Publisher', 'Image-URL-L'
+![image](https://github.com/user-attachments/assets/c30830a5-2543-4135-888d-ba5f8f1b753c) <br>
+Pada tahapan ini kita membuat dua metode yaitu dengan menggunakan ```dropna()``` Pada colom ```'Book-Author', 'Publisher', 'Image-URL-L'``` <br>
+#### Colom 'Age'
+![image](https://github.com/user-attachments/assets/ed0a9efd-bd3e-4d6d-8bbf-ae52b0d9e7ac) <br>
+Sedangkan pada colom Age di data Users kita menggunakan metode Mengganti nilai yang missing value dengan ```.median()``` dari nilai colom Age 
 
 ### Memperbaiki type data pada colom Year-Of-Publication dan Age
 ![image](https://github.com/user-attachments/assets/c4bf14e7-de35-4e9e-9598-7cdce1dce6b8) <br>
@@ -133,12 +136,7 @@ Disini pada colom Year-Of-Publication dan Age mengganti type data yang awalnya t
 dengan memanfaatkan libary pandas dengan kode ```astype('Int64')```
 
 ### Memperbaiki data yang memiliki missing value
-#### Colom 'Book-Author', 'Publisher', 'Image-URL-L'
-![image](https://github.com/user-attachments/assets/c30830a5-2543-4135-888d-ba5f8f1b753c) <br>
-Pada tahapan ini kita membuat dua metode yaitu dengan menggunakan ```dropna()``` Pada colom ```'Book-Author', 'Publisher', 'Image-URL-L'``` <br>
-#### Colom 'Age'
-![image](https://github.com/user-attachments/assets/ed0a9efd-bd3e-4d6d-8bbf-ae52b0d9e7ac) <br>
-Sedangkan pada colom Age di data Users kita menggunakan metode Mengganti nilai yang missing value dengan ```.median()``` dari nilai colom Age 
+
 
 ### Menghapus data nan pada Year-of-Publication 
 Tapah ini yaitu menggunakan libary pandas dalam mengatasi data yang nan, dan mengatur untuk hanya mengambil data dengan rentang tahun 1900 sampai 2025 <br>
