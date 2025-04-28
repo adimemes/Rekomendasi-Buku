@@ -11,7 +11,6 @@
 <p align = "Justify" >Sistem Rekomendasi adalah salah satu cara untuk menguntungkan kedua belah pihak konsumen yang bisa memilih Buku apa yang sesuai dengan selera mereka, dan Author Buku bisa mempelajari dari data konsumen dengan memanfaatkan perkembangan teknologi sekarang, menggunakan teknologi Machine Learning dapat membuat sistem rekomendasi yang menguntungkan dua belah pihak ini. <a href = "https://ejurnal.umri.ac.id/index.php/coscitech/article/view/5131">[1]</a></p> 
 
 # Business Understanding 
---- 
 Dari Latar Belakang di atas kita bisa diambil Problem
 
 ### Problem
@@ -47,7 +46,6 @@ untuk mencapai Goals yang ada dapat melakukan bebrapa solusi yaitu :
       <br>Tidak cocok untuk pengguna baru karena metode ini sangat memerlukan riwayat interaksi untuk menghasilkan rekomendasi.
 
 # Data Understanding
---- 
 Dalam Project ini menggunakan dataset yang sudah tersedia dalam situs Kaggle, dimana data ini memiliki 3 buah data inti yaitu data buku, rating, user pada data ini terdapat fitur yang bisa digunakan untuk membuat sebuah sistem rekomendasi yang bisa memberikan referensi buku yang sesuai dengan pendekatan dari pengguna. <br>
 Referensi [Dataset](https://www.kaggle.com/datasets/arashnic/book-recommendation-dataset/data) <br>
 ![image](https://github.com/user-attachments/assets/78c5ac7e-629c-4d65-8531-74fc54c7956e)
@@ -123,6 +121,7 @@ Pada tahap ini juga sama menggunakan libary seaborn untuk membuat chartnya, dan 
 # Data Preparation
 Pada Tahapan Data Preparation ada beberapa tahapan yang dilakukan:
 ### Memperbaiki Missing Value
+### Memperbaiki outlier pada colom Year-of-publication
 #### Colom 'Book-Author', 'Publisher', 'Image-URL-L'
 ![image](https://github.com/user-attachments/assets/c30830a5-2543-4135-888d-ba5f8f1b753c) <br>
 Pada tahapan ini kita membuat dua metode yaitu dengan menggunakan ```dropna()``` Pada colom ```'Book-Author', 'Publisher', 'Image-URL-L'``` <br>
@@ -130,20 +129,6 @@ Pada tahapan ini kita membuat dua metode yaitu dengan menggunakan ```dropna()```
 ![image](https://github.com/user-attachments/assets/ed0a9efd-bd3e-4d6d-8bbf-ae52b0d9e7ac) <br>
 Sedangkan pada colom Age di data Users kita menggunakan metode Mengganti nilai yang missing value dengan ```.median()``` dari nilai colom Age 
 
-### Memperbaiki type data pada colom Year-Of-Publication dan Age
-![image](https://github.com/user-attachments/assets/c4bf14e7-de35-4e9e-9598-7cdce1dce6b8) <br>
-Disini pada colom Year-Of-Publication dan Age mengganti type data yang awalnya type object menjadi int<br>
-dengan memanfaatkan libary pandas dengan kode ```astype('Int64')```
-
-### Memperbaiki data yang memiliki missing value
-
-
-### Menghapus data nan pada Year-of-Publication 
-Tapah ini yaitu menggunakan libary pandas dalam mengatasi data yang nan, dan mengatur untuk hanya mengambil data dengan rentang tahun 1900 sampai 2025 <br>
-```Books = Books[Books['Year-Of-Publication'].notna()]``` <br>
-```Books = Books[(Books['Year-Of-Publication'] >= 1900) & (Books['Year-Of-Publication'] <= 2025)]``` <br>
-dan dengan data yang baru bisa untuk melihat trend dari publikasi buku tahunan. <br>
-![image](https://github.com/user-attachments/assets/87808ef5-6572-45c1-acf7-a50688f938bc) <br>
 
 ### Menggabung Dataset Books dan Ratings untuk Mencai top Buku
 Tahap ini memiliki beberapa tahapan :
