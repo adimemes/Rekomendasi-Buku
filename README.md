@@ -121,14 +121,12 @@ Pada tahap ini juga sama menggunakan libary seaborn untuk membuat chartnya, dan 
 # Data Preparation
 Pada Tahapan Data Preparation ada beberapa tahapan yang dilakukan:
 ### Memperbaiki Missing Value
+Pada tahapan ini ada dua data yang memiliki nilai missing value yaitu data Books dan Age <br>
+* pada bagian books karena nilai missing valuenya sedikit dan tidak terlalu mempengaruhi kondisi model nantinya, bisa menggunakan perintah ```.dropna()``` yang berfungsi untuk membuang data yang memiliki kondisi missing value.
+* kemudian pada tahapan age karena data yang missing terlalu banyak dan berpengaruh pada tahapan modeling, karena itu bisa menggunakan nilai median untuk nilai yang mengalami missing value dengan code ```Users['Age'] = Users['Age'].fillna(Users['Age'].median())```
 ### Memperbaiki outlier pada colom Year-of-publication
-#### Colom 'Book-Author', 'Publisher', 'Image-URL-L'
-![image](https://github.com/user-attachments/assets/c30830a5-2543-4135-888d-ba5f8f1b753c) <br>
-Pada tahapan ini kita membuat dua metode yaitu dengan menggunakan ```dropna()``` Pada colom ```'Book-Author', 'Publisher', 'Image-URL-L'``` <br>
-#### Colom 'Age'
-![image](https://github.com/user-attachments/assets/ed0a9efd-bd3e-4d6d-8bbf-ae52b0d9e7ac) <br>
-Sedangkan pada colom Age di data Users kita menggunakan metode Mengganti nilai yang missing value dengan ```.median()``` dari nilai colom Age 
-
+pada tahapan ini bertujuan untuk memperbaiki nilai data yang ada pada colom ```Year-of-publication``` karena pada data ada data yang janggal dimulai dari data yang bernilai ```NaN``` data tahun 0 dan data tahun yang melewati 2025, untuk mengatasi hal ini menggunakan cara yaitu menghapus nilai ```NaN``` dengan fungsi ```.dropna()``` kemudian menghapus semua data yang tidak termasuk pada data bernilai 1900 sampai 2025 dengan code ```Books = Books[(Books['Year-Of-Publication'] >= 1900) & (Books['Year-Of-Publication'] <= 2025)]``` kemudian kembali membuat grafik untuk memeriksa grafik ```Year-of-publication``` dengan data yang lebih bersih. <br>
+![image](https://github.com/user-attachments/assets/7d4a802f-dd80-40b8-80e6-98ef52efbce1)
 
 ### Menggabung Dataset Books dan Ratings untuk Mencai top Buku
 Tahap ini memiliki beberapa tahapan :
@@ -138,23 +136,44 @@ Tahap ini memiliki beberapa tahapan :
 * Kemudian membuat dataframe populer_buku dengan menambahkan colom ```'Book-Title','Book-Author','Image-URL-M','num_ratings','avg_rating'```
 ![image](https://github.com/user-attachments/assets/24d01605-552c-4c68-9fe2-9ecfeb1669ed)
 
+### Collaborative Filtering
+* Split data <br>
+Pada tahapan data preparation dalam model Collaborative Filltering di proyek ini membagi data penting yaitu pada bagian ```user_rating_counts``` hanya mengambil data ```Book-Rating``` yang telah memberikan rating pada lebih dari 200 buku dengan code ```user_rating_counts = rating_buku.groupby('User-ID').count()['Book-Rating'] > 200
+```. kemudian di simpan pada ```good_reader``` dan menghitung jumlah berapa user yang memberikan rating. dengan code ```good_reader = user_rating_counts[user_rating_counts].index``` <br>
+kemudian tahapan selanjutnya adalah membagi data top buku yang sudah diberi rating sebanyak lebih dari 50 kali dan menyimpan pada ```final_ratings ``` dengan code ```y = filtered_rating.groupby('Book-Title').count()['Book-Rating']>=50 famous_books = y[y].index``` dan terakhir di filter kembali pada ```final_ratings``` dengan code ```final_ratings = filtered_rating[filtered_rating['Book-Title'].isin(famous_books)]```<br>
+* Pivot table <br>
+pada tahapan ini adalah membuat pivot table yang berguna untuk mengubah data rating yang awalnya berbentuk long format menjadi format matriks untuk memudahkan dalam menghitung cosine similarity antar buku <br>
+proses pembuatan pivot table yaitu dengan memanfaatkan data ```User-ID```. ```Book-Title```, dan ```Book-Rating``` dengan code seperti berikut : <br>
+```pt = final_ratings.pivot_table(index='Book-Title',columns='User-ID',values='Book-Rating')``` kemudian mengatisipasi nilai ```NaN``` pada pivot table dengan mengganti nilai yang ```NaN``` dengan 0 dengan cara
+```pt.fillna(0,inplace=True)``` <br>
+![image](https://github.com/user-attachments/assets/d1982ae5-3649-41ff-b059-7762b0ccf686)
+
+### Content based filltering
+* TF-IDF <br>
+pada tahapan ini berfungsi untuk membuat Tokenisasi nama penulis yang berfungsi untuk menghitung frekuensi jumlah nama penulis yang sering muncul dari tahap Tokenisasi yang disebut TF, kemudian untuk nama penulis yang jarang keluar akan memiliki bobot tersendiri yaitu IDF. <br>
+kemudian TF-IDF melakukan perhitungan dengan cara TF x IDF, Ini memberikan bobot lebih tinggi pada bagian nama yang unik dan membedakan satu penulis dari yang lain. <br>
+Contoh: "Tolkien" akan memiliki nilai TF-IDF lebih tinggi daripada "John" karena lebih unik.<br>
+
+untuk melakukan TF-IDF menggunakan code seperti ini: <br>
+```vectorizer = TfidfVectorizer()``` ```author_matrix = vectorizer.fit_transform(author_df['Book-Author'])``` <br>
+untuk kode ```vectorizer = TfidfVectorizer()``` memiliki fungsi untuk membuat Tokensasi, kemudian pada code ```author_matrix = vectorizer.fit_transform(author_df['Book-Author'])``` berfungsi untuk membuat Tokensasi pada nama author.
+
 # Modeling and Result
 Pada proyek ini menggunakan dua metode yaitu :
 *   Collaborative Filtering
 *   content based filltering
 
 ## Collaborative Filltering
-![image](https://github.com/user-attachments/assets/355a00d2-e0d6-46fe-acd2-c1dde758e8fd)
-pada tahapan ini menggunakan metode yang base model, dimana menggunakan tahapan matrix factorization, metode ini bekerja dengan mereduksi matriks menjadi bagian-bagian penyusunnya. Kedua dekomposisi matriks ini kemudian saling dikalikan. Hasil perkalian matriks tersebut diolah dengan parameter faktor k yang menghasilkan matriks baru sebagai hasil learning dengan nilai yang mendekati nilai matriks aslinya.<br>
-Pada Project ini dibuat sebuah function untuk memanggil 5 buku yang memiliki kemiripan berdasarkan nilai matrix dengan buku yang kita inputkan. <br>
-![image](https://github.com/user-attachments/assets/452554a0-2e9a-4891-8611-6f8d6136d505)
+Collaborative filtering adalah algoritma sistem rekomendasi yang bergantung pada pendapat komunitas pengguna. tidak memerlukan atribut untuk setiap itemnya seperti pada sistem berbasis konten. Collaborative filtering dibagi lagi menjadi dua kategori, yaitu: model based (metode berbasis model machine learning) dan memory based (metode berbasis memori). cara kerja algoritma ini bisa diasumsikan seperti ini yaitu jika pengguna A memiliki opini yang sama dengan pengguna B tentang suatu item, maka pengguna A lebih cenderung memiliki opini pengguna B untuk item lain daripada opini pengguna yang dipilih secara acak. dengan intinya algoritma ini memiliki konsep ```"Pengguna yang menyukai item yang sama dengan Anda juga menyukai item-item ini."``` <br>
+pada proyek ini juga memiliki konsep yang sama dimana akan memberikan rekomendasi berdasarkan rating yang diberikan oleh user pada top buku, dengan menginput judul buku kemudian akan memberikan Top 5 buku yang user lain sukai. <br>
+![image](https://github.com/user-attachments/assets/fecb9b98-0382-43a1-9ad0-92d6b9b75041)
+
 ## Content Based Filltering
-Pada Tahapan ini menggunakan pendekatan yaitu TF-ID (Term Frequency - Inverse Document Frequency) adalah metode untuk mengubah teks menjadi angka berdasarkan:
-* TF: Seberapa sering suatu kata muncul dalam satu dokumen
-* IDF: Seberapa jarang kata itu muncul di seluruh dokumen
-Dengan Itu metode untuk mendapatkan rekomendasi Author, bisa di dapatkan dengan cara melihat seberapa sering data Author itu muncul pada User Lain
-<br>
-![image](https://github.com/user-attachments/assets/f05f4ca1-23cf-4b33-bf5d-1ac2cd3b96c1)
+Content-Based Filtering adalah teknik sistem rekomendasi yang merekomendasikan item berdasarkan deskripsi item dan profil preferensi pengguna. Algoritma ini bekerja dengan menyarankan item serupa yang pernah disukai di masa lalu atau sedang dilihat di masa kini kepada pengguna. Semakin banyak informasi yang diberikan pengguna, semakin baik akurasi sistem rekomendasi. <br>
+intinya algoritma ini adalah ```"Anda menyukai item dengan karakteristik ini, jadi Anda mungkin juga menyukai item lain dengan karakteristik serupa."```<br>
+pada proyek ini juga memiliki konsep yang sama dimana akan merekomendasikan sesuatu tulisan yang cukup mirip dengan author kesukaan dengan input nama author dan akan memberikan top 5 author. <br>
+![image](https://github.com/user-attachments/assets/440e27dc-8e1b-47d2-ab97-5426ae1aaf56)
+
 
 # EVALUASI
 Pada Proyek ini membuat dua buah metode yaitu:
