@@ -176,17 +176,37 @@ pada proyek ini juga memiliki konsep yang sama dimana akan merekomendasikan sesu
 
 
 # EVALUASI
-Pada Proyek ini membuat dua buah metode yaitu:
-* pertama menggunakan Collborative filltering, untuk mencari rekomendasi buku berdasarkan rating yang diberi User
-* Kedua adalah menggunakan Conten Based Filltering
-
-Dua Metode itu menggunakan cara kerja yang berbeda atau matriks yang beda. <br>
-* Untuk yang pertama ada menggunakan Pivot table untuk melihat user ID berapa yang memberi rating paa sebuah Buku
-* Dan pada metode kedua menggunakan TF-ID yaitu metode yang berkerja dengan cara mengubah teks menjadi angka berdasarkan:
-  * TF: Seberapa sering suatu kata muncul dalam satu dokumen
-  * IDF: Seberapa jarang kata itu muncul di seluruh dokumen
+## Content Based Filtering
+pada evaluasi model Content Based Filtering disini harus membuat sebuah ground data, untuk membuat data penulis dan buku yang disukai oleh USer sebagai Based User <br>
+Kemudian adalah pembuatan matrik evaluasi, dimana disini menggunakan: 
+* Precision
+* recalls
+dengan jumlah yang dievaluasi disini adalah 5 <br>
+![image](https://github.com/user-attachments/assets/5c3282ed-71f7-4cd0-9785-1be26c9777ad)
+<br>Dari Hasil yang didapatkan model masih terbilang kurang dari segi akurasi <br>
+dari hasil 5 rekomendasi yang diberikan hasil yang di dapatkan:
+* Precision : 4,62%
+* Recall : 0,66%
+* F1-score : 1,15 %
+hal ini didapatkan mungkin karena kurangnya data pada user karena pada dataset user hanya ada colom ID, location dan age yang masih dibilang kurang, karena Content Based Filtering adalah algoritma berdasarkan riwayat User.
 <br>
-Dengan itu bisa mencari data kemiripian untuk Metode kedua.
+
+## Collaborative Filtering
+Pada Evaluasi untuk model Collaborative Filtering yaitu menggunakan menggunakan RMSE dan menampilkan contoh User dalam memberi rating <br>
+![image](https://github.com/user-attachments/assets/11ba2412-b335-4bbe-b322-b9591f19d7a6)
+<br>
+Dilihat dari hasil yang didapatkan, pada model ini lebih tinggi dibandingkan Contend Based Filltering dimana pada evaluasi matriks mendapatkan nilai: <br>
+* RMSE (Root Mean Squared Error) :  7.0683
+* MAE (Mean Absolute Error) : 6.3886
+* Normalized RMSE = 0.7068
+* Akurasi (1 - NRMSE) : 29.32%
+dengan akurasi 29,32% masih terbilang cukup rendah, hal ini mungkin bisa dikarenakan jumlah buku masih kurang, dan banyak data buku yang belum diberi rating
+<br>
+
+## Perbandingan Model
+Dilihat dari hasil Evaluasi, untuk Model Collaborative Filtering masih lebih baik dibanding Contend Based Filtering, hal ini bisa terjadi karena kurangnya data yang dibutuhkan dalam pembuatan model, jika data yang ada lebih banyak bukan tidak mungkin akurasi akan meningkat lebih baik dalam pemberian rekomendasi
+
+<br>
 
 ## Apakah Sudah Menjawab Problem Statment :
 
