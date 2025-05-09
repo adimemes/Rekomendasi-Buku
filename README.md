@@ -183,7 +183,21 @@ Content-Based Filtering adalah teknik sistem rekomendasi yang merekomendasikan i
 intinya algoritma ini adalah ```"Anda menyukai item dengan karakteristik ini, jadi Anda mungkin juga menyukai item lain dengan karakteristik serupa."```<br>
 pada proyek ini juga memiliki konsep yang sama dimana akan merekomendasikan sesuatu tulisan yang cukup mirip dengan author kesukaan dengan input nama author dan akan memberikan top 5 author. <br>
 ![image](https://github.com/user-attachments/assets/440e27dc-8e1b-47d2-ab97-5426ae1aaf56)
+<br>
 
+pada dua model ini juga menggunakan Cosine Similarty yang merupakan metrik untuk mengukur kemiripan antara dua vektor berdasarkan sudut.
+* 1 → dua vektor sangat mirip (arahnya sama)
+* 0 → dua vektor tidak ada hubungannya (saling tegak lurus)
+* -1 → dua vektor berlawanan arah (jarang terjadi dalam sistem rekomendasi)
+
+adapun rumus perhitungan dari cosine similarty yaitu sebagai berikut. <br>
+![image](https://github.com/user-attachments/assets/72e0f00a-89e6-48a2-bbdf-65644e8b4126)
+<br>
+## Cosine Similarty pada Collaborative Filltering
+pada Collaborative filltering penggunaan cosine similarty ```train_similarity = cosine_similarity(pt)``` dimana disini digunakan untuk menghitung kemiripan antar buku berdasarkan kolom pengguna dengan memanfaatkan pivot table sebagai bentuk matriks pengguna dan buku <br>
+
+## Cosine Similarty pada Content Based Filltering
+pada Content Based Filltering penggunaan cosine simalrty ```similarities = cosine_similarity(author_vec, author_matrix)[0]```  dimana disini digunakan untuk menghitung kemiripan penulis yang mirip dari vektor fitur tokenisasi  dari TF-IDF <br>
 
 # EVALUASI
 ## Content Based Filtering
