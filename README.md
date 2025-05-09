@@ -119,6 +119,16 @@ Pada tahap ini juga sama menggunakan libary seaborn untuk membuat chartnya, dan 
 
 
 # Data Preparation
+### Memperbaiki type data
+Pada dataset Books dan User colom ```Year-Of-Publication``` pada bagian Books dan colom ```Age``` pada bagian User. <br>
+untuk kasus pada dataset Books colom ```Year-Of-Publication``` yang awalnya data bertipe ```object``` dimana ini salah yang seharusnya data itu memiliki tipe ```int``` dengan code ```Books['Year-Of-Publication'] = Books['Year-Of-Publication'].astype('Int64')``` <br>
+dan untuk dataset User colom ```Age``` yang awalnya bertipe ```float``` dimana ini juga salah dan harusnya bertipe ```int``` dengan code ```Users['Age'] = Users['Age'].astype('Int64')``` <br>
+Hasil dari perubahan tipe bisa dilihat pada gambar ini. <br>
+![image](https://github.com/user-attachments/assets/d2202bd3-7d1f-462a-8ba6-ee1fd5898864) 
+<br>
+![image](https://github.com/user-attachments/assets/b7d90ae5-8103-4eaa-9f57-dc89d659e8f8)
+
+
 Pada Tahapan Data Preparation ada beberapa tahapan yang dilakukan:
 ### Memperbaiki Missing Value
 Pada tahapan ini ada dua data yang memiliki nilai missing value yaitu data Books dan Age <br>
